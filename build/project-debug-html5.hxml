@@ -1,26 +1,26 @@
--cp C:\Users\Roel\Documents\Git\Kha\Sources
--cp C:\Users\Roel\Documents\Git\Kha\Backends\HTML5
--cp c:\Users\Roel\Documents\Ludum Dare\LD39\Sources
--cp c:\Users\Roel\Documents\Ludum Dare\LD39\Libraries\rGine3\Sources
--cp c:\Users\Roel\Documents\Ludum Dare\LD39\Libraries\haxebullet\Sources
--cp C:\HaxeToolkit\haxe\lib\actuate\1,8,7
--cp C:\HaxeToolkit\haxe\lib\hxmath2\git
--cp C:\HaxeToolkit\haxe\lib\tink_xml\0,2,0\src
--cp C:\HaxeToolkit\haxe\lib\tink_macro\0,14,0\src
--cp C:\HaxeToolkit\haxe\lib\tink_core\1,14,3\src
--cp C:\HaxeToolkit\haxe\lib\tink_macro\0,14,0\src
--cp C:\HaxeToolkit\haxe\lib\tink_core\1,14,3\src
--cp C:\HaxeToolkit\haxe\lib\thx,core\0,42,1\src
--cp c:\Users\Roel\Documents\Ludum Dare\LD39\Libraries\rGine3
--cp c:\Users\Roel\Documents\Ludum Dare\LD39\Libraries\haxebullet
--cp C:\HaxeToolkit\haxe\lib\actuate\1,8,7
--cp C:\HaxeToolkit\haxe\lib\hxmath2\git
--cp C:\HaxeToolkit\haxe\lib\tink_xml\0,2,0
--cp C:\HaxeToolkit\haxe\lib\tink_macro\0,14,0
--cp C:\HaxeToolkit\haxe\lib\tink_core\1,14,3
--cp C:\HaxeToolkit\haxe\lib\tink_macro\0,14,0
--cp C:\HaxeToolkit\haxe\lib\tink_core\1,14,3
--cp C:\HaxeToolkit\haxe\lib\thx,core\0,42,1
+-cp /Users/Roel/Google Drive/Projects/kha/Sources
+-cp /Users/Roel/Google Drive/Projects/kha/Backends/HTML5
+-cp /Users/Roel/Google Drive/Projects/LD39/Sources
+-cp /Users/Roel/Google Drive/Projects/LD39/Libraries/rGine3/Sources
+-cp /Users/Roel/Google Drive/Projects/LD39/Libraries/haxebullet/Sources
+-cp /usr/local/lib/haxe/lib/actuate/1,8,7
+-cp /usr/local/lib/haxe/lib/hxmath2/git
+-cp /usr/local/lib/haxe/lib/tink_xml/0,2,0/src
+-cp /usr/local/lib/haxe/lib/tink_macro/0,14,0/src
+-cp /usr/local/lib/haxe/lib/tink_core/1,13,0/src
+-cp /usr/local/lib/haxe/lib/tink_macro/0,14,0/src
+-cp /usr/local/lib/haxe/lib/tink_core/1,13,0/src
+-cp /usr/local/lib/haxe/lib/thx,core/0,42,1/src
+-cp /Users/Roel/Google Drive/Projects/LD39/Libraries/rGine3
+-cp /Users/Roel/Google Drive/Projects/LD39/Libraries/haxebullet
+-cp /usr/local/lib/haxe/lib/actuate/1,8,7
+-cp /usr/local/lib/haxe/lib/hxmath2/git
+-cp /usr/local/lib/haxe/lib/tink_xml/0,2,0
+-cp /usr/local/lib/haxe/lib/tink_macro/0,14,0
+-cp /usr/local/lib/haxe/lib/tink_core/1,13,0
+-cp /usr/local/lib/haxe/lib/tink_macro/0,14,0
+-cp /usr/local/lib/haxe/lib/tink_core/1,13,0
+-cp /usr/local/lib/haxe/lib/thx,core/0,42,1
 -D rGine3
 -D haxebullet
 -D actuate
@@ -54,7 +54,7 @@
 -D kha_debug_html5
 -D kha
 -D kha_version=1611
--js debug-html5\kha.js
+-js debug-html5/kha.js
 -D thx_core
 -debug
 -main Main

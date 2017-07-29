@@ -1,6 +1,72 @@
 {
 	"files": [
 		{
+			"name": "tile_dae",
+			"files": [
+				"tile.dae"
+			],
+			"type": "blob"
+		},
+		{
+			"name": "basic_vert",
+			"files": [
+				"basic.vert.essl"
+			],
+			"type": "shader",
+			"inputs": [
+				{
+					"name": "position",
+					"type": "vec3"
+				},
+				{
+					"name": "gl_VertexID",
+					"type": "int"
+				},
+				{
+					"name": "gl_InstanceID",
+					"type": "int"
+				}
+			],
+			"outputs": [],
+			"uniforms": [
+				{
+					"name": "projection",
+					"type": "mat4"
+				},
+				{
+					"name": "view",
+					"type": "mat4"
+				},
+				{
+					"name": "model",
+					"type": "mat4"
+				}
+			],
+			"types": [
+				{
+					"name": "gl_PerVertex",
+					"members": [
+						{
+							"type": "vec4",
+							"name": "gl_Position"
+						},
+						{
+							"type": "float",
+							"name": "gl_PointSize"
+						},
+						{
+							"type": "float[]",
+							"name": "gl_ClipDistance"
+						},
+						{
+							"type": "float[]",
+							"name": "gl_CullDistance"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "basic_frag",
 			"files": [
 				"basic.frag.essl"
@@ -110,74 +176,15 @@
 			]
 		},
 		{
-			"name": "basic_vert",
+			"name": "cubemap_debug_frag",
 			"files": [
-				"basic.vert.essl"
+				"cubemap_debug.frag.essl"
 			],
 			"type": "shader",
 			"inputs": [
 				{
-					"name": "position",
+					"name": "frag_texDir",
 					"type": "vec3"
-				},
-				{
-					"name": "gl_VertexID",
-					"type": "int"
-				},
-				{
-					"name": "gl_InstanceID",
-					"type": "int"
-				}
-			],
-			"outputs": [],
-			"uniforms": [
-				{
-					"name": "projection",
-					"type": "mat4"
-				},
-				{
-					"name": "view",
-					"type": "mat4"
-				},
-				{
-					"name": "model",
-					"type": "mat4"
-				}
-			],
-			"types": [
-				{
-					"name": "gl_PerVertex",
-					"members": [
-						{
-							"type": "vec4",
-							"name": "gl_Position"
-						},
-						{
-							"type": "float",
-							"name": "gl_PointSize"
-						},
-						{
-							"type": "float[]",
-							"name": "gl_ClipDistance"
-						},
-						{
-							"type": "float[]",
-							"name": "gl_CullDistance"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "instanced_frag",
-			"files": [
-				"instanced.frag.essl"
-			],
-			"type": "shader",
-			"inputs": [
-				{
-					"name": "frag_color",
-					"type": "vec4"
 				}
 			],
 			"outputs": [
@@ -186,7 +193,12 @@
 					"type": "vec4"
 				}
 			],
-			"uniforms": [],
+			"uniforms": [
+				{
+					"name": "cubemap",
+					"type": "samplerCube"
+				}
+			],
 			"types": []
 		},
 		{
@@ -245,15 +257,15 @@
 			]
 		},
 		{
-			"name": "cubemap_debug_frag",
+			"name": "instanced_frag",
 			"files": [
-				"cubemap_debug.frag.essl"
+				"instanced.frag.essl"
 			],
 			"type": "shader",
 			"inputs": [
 				{
-					"name": "frag_texDir",
-					"type": "vec3"
+					"name": "frag_color",
+					"type": "vec4"
 				}
 			],
 			"outputs": [
@@ -262,13 +274,96 @@
 					"type": "vec4"
 				}
 			],
-			"uniforms": [
+			"uniforms": [],
+			"types": []
+		},
+		{
+			"name": "instanced_vert",
+			"files": [
+				"instanced.vert.essl"
+			],
+			"type": "shader",
+			"inputs": [
 				{
-					"name": "cubemap",
-					"type": "samplerCube"
+					"name": "offset",
+					"type": "mat4"
+				},
+				{
+					"name": "position",
+					"type": "vec3"
+				},
+				{
+					"name": "color",
+					"type": "vec4"
+				},
+				{
+					"name": "normal",
+					"type": "vec3"
+				},
+				{
+					"name": "texCoord",
+					"type": "vec2"
+				},
+				{
+					"name": "vcolor",
+					"type": "vec4"
+				},
+				{
+					"name": "tangent",
+					"type": "vec3"
+				},
+				{
+					"name": "gl_VertexID",
+					"type": "int"
+				},
+				{
+					"name": "gl_InstanceID",
+					"type": "int"
 				}
 			],
-			"types": []
+			"outputs": [
+				{
+					"name": "frag_color",
+					"type": "vec4"
+				}
+			],
+			"uniforms": [
+				{
+					"name": "projection",
+					"type": "mat4"
+				},
+				{
+					"name": "view",
+					"type": "mat4"
+				},
+				{
+					"name": "model",
+					"type": "mat4"
+				}
+			],
+			"types": [
+				{
+					"name": "gl_PerVertex",
+					"members": [
+						{
+							"type": "vec4",
+							"name": "gl_Position"
+						},
+						{
+							"type": "float",
+							"name": "gl_PointSize"
+						},
+						{
+							"type": "float[]",
+							"name": "gl_ClipDistance"
+						},
+						{
+							"type": "float[]",
+							"name": "gl_CullDistance"
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "phong_frag",
@@ -362,94 +457,6 @@
 						{
 							"type": "bool",
 							"name": "activated"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "instanced_vert",
-			"files": [
-				"instanced.vert.essl"
-			],
-			"type": "shader",
-			"inputs": [
-				{
-					"name": "offset",
-					"type": "mat4"
-				},
-				{
-					"name": "position",
-					"type": "vec3"
-				},
-				{
-					"name": "color",
-					"type": "vec4"
-				},
-				{
-					"name": "normal",
-					"type": "vec3"
-				},
-				{
-					"name": "texCoord",
-					"type": "vec2"
-				},
-				{
-					"name": "vcolor",
-					"type": "vec4"
-				},
-				{
-					"name": "tangent",
-					"type": "vec3"
-				},
-				{
-					"name": "gl_VertexID",
-					"type": "int"
-				},
-				{
-					"name": "gl_InstanceID",
-					"type": "int"
-				}
-			],
-			"outputs": [
-				{
-					"name": "frag_color",
-					"type": "vec4"
-				}
-			],
-			"uniforms": [
-				{
-					"name": "projection",
-					"type": "mat4"
-				},
-				{
-					"name": "view",
-					"type": "mat4"
-				},
-				{
-					"name": "model",
-					"type": "mat4"
-				}
-			],
-			"types": [
-				{
-					"name": "gl_PerVertex",
-					"members": [
-						{
-							"type": "vec4",
-							"name": "gl_Position"
-						},
-						{
-							"type": "float",
-							"name": "gl_PointSize"
-						},
-						{
-							"type": "float[]",
-							"name": "gl_ClipDistance"
-						},
-						{
-							"type": "float[]",
-							"name": "gl_CullDistance"
 						}
 					]
 				}
@@ -858,36 +865,6 @@
 			"types": []
 		},
 		{
-			"name": "painter_image_frag",
-			"files": [
-				"painter-image.frag.essl"
-			],
-			"type": "shader",
-			"inputs": [
-				{
-					"name": "texCoord",
-					"type": "vec2"
-				},
-				{
-					"name": "color",
-					"type": "vec4"
-				}
-			],
-			"outputs": [
-				{
-					"name": "FragColor",
-					"type": "vec4"
-				}
-			],
-			"uniforms": [
-				{
-					"name": "tex",
-					"type": "sampler2D"
-				}
-			],
-			"types": []
-		},
-		{
 			"name": "painter_colored_vert",
 			"files": [
 				"painter-colored.vert.essl"
@@ -946,6 +923,36 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "painter_image_frag",
+			"files": [
+				"painter-image.frag.essl"
+			],
+			"type": "shader",
+			"inputs": [
+				{
+					"name": "texCoord",
+					"type": "vec2"
+				},
+				{
+					"name": "color",
+					"type": "vec4"
+				}
+			],
+			"outputs": [
+				{
+					"name": "FragColor",
+					"type": "vec4"
+				}
+			],
+			"uniforms": [
+				{
+					"name": "tex",
+					"type": "sampler2D"
+				}
+			],
+			"types": []
 		},
 		{
 			"name": "painter_image_vert",
@@ -1046,6 +1053,74 @@
 			"types": []
 		},
 		{
+			"name": "painter_text_vert",
+			"files": [
+				"painter-text.vert.essl"
+			],
+			"type": "shader",
+			"inputs": [
+				{
+					"name": "vertexPosition",
+					"type": "vec3"
+				},
+				{
+					"name": "texPosition",
+					"type": "vec2"
+				},
+				{
+					"name": "vertexColor",
+					"type": "vec4"
+				},
+				{
+					"name": "gl_VertexID",
+					"type": "int"
+				},
+				{
+					"name": "gl_InstanceID",
+					"type": "int"
+				}
+			],
+			"outputs": [
+				{
+					"name": "texCoord",
+					"type": "vec2"
+				},
+				{
+					"name": "fragmentColor",
+					"type": "vec4"
+				}
+			],
+			"uniforms": [
+				{
+					"name": "projectionMatrix",
+					"type": "mat4"
+				}
+			],
+			"types": [
+				{
+					"name": "gl_PerVertex",
+					"members": [
+						{
+							"type": "vec4",
+							"name": "gl_Position"
+						},
+						{
+							"type": "float",
+							"name": "gl_PointSize"
+						},
+						{
+							"type": "float[]",
+							"name": "gl_ClipDistance"
+						},
+						{
+							"type": "float[]",
+							"name": "gl_CullDistance"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "painter_video_frag",
 			"files": [
 				"painter-video.frag.essl"
@@ -1110,74 +1185,6 @@
 				},
 				{
 					"name": "color",
-					"type": "vec4"
-				}
-			],
-			"uniforms": [
-				{
-					"name": "projectionMatrix",
-					"type": "mat4"
-				}
-			],
-			"types": [
-				{
-					"name": "gl_PerVertex",
-					"members": [
-						{
-							"type": "vec4",
-							"name": "gl_Position"
-						},
-						{
-							"type": "float",
-							"name": "gl_PointSize"
-						},
-						{
-							"type": "float[]",
-							"name": "gl_ClipDistance"
-						},
-						{
-							"type": "float[]",
-							"name": "gl_CullDistance"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "painter_text_vert",
-			"files": [
-				"painter-text.vert.essl"
-			],
-			"type": "shader",
-			"inputs": [
-				{
-					"name": "vertexPosition",
-					"type": "vec3"
-				},
-				{
-					"name": "texPosition",
-					"type": "vec2"
-				},
-				{
-					"name": "vertexColor",
-					"type": "vec4"
-				},
-				{
-					"name": "gl_VertexID",
-					"type": "int"
-				},
-				{
-					"name": "gl_InstanceID",
-					"type": "int"
-				}
-			],
-			"outputs": [
-				{
-					"name": "texCoord",
-					"type": "vec2"
-				},
-				{
-					"name": "fragmentColor",
 					"type": "vec4"
 				}
 			],

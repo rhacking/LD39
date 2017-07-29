@@ -50,6 +50,6 @@ void main()
     }
     light += ((mat.diffuse.xyz * clamp(dot(-nLightDir, normalize(frag_normal)), 0.0, 1.0)) * lightIntensity);
     light += ((mat.specular.xyz * pow(clamp(dot(normalize(-nLightDir + V), normalize(frag_normal)), 0.0, 1.0), mat.shininess)) * lightIntensity);
-    gl_FragData[0] = vec4(light + ambient, mat.diffuse.w * mat.ambient.w);
+    gl_FragData[0] = vec4(light + ambient, mat.diffuse.w);
 }
 

@@ -1,13 +1,18 @@
 package ldgame.states;
 
+import ldgame.components.ComponentCamControl;
+
 import kha.Framebuffer;
 
 import rgine.util.State;
 import rgine.Scene;
 import rgine.GameObject;
+import rgine.components.ComponentModel;
 import rgine.components.ComponentBoxModel;
 import rgine.components.ComponentCamera;
 import rgine.components.ComponentLight;
+import rgine.components.ComponentHexCollider;
+import rgine.components.ComponentRayCollider;
 
 import rgine.gfx.Material.MaterialDefault;
 
@@ -15,9 +20,12 @@ import rgine.gfx.Camera.ProjectionType;
 import rgine.gfx.Camera.DefaultCamera;
 
 import rgine.gfx.Light.LightDefault;
+import rgine.gfx.Model;
 
 import kha.math.FastVector3 as V3;
 import kha.math.FastVector4 as V4;
+
+import rgine.loader.ColladaLoaderNew;
 
 import haxe.ds.Vector;
 
@@ -34,12 +42,15 @@ class StateGame implements State {
 	private var world : Scene;
 
 	private var hexes : Vector<Vector<Hex>>;
-	private static var HEX_HEIGHT(default, never) = 1.0;
-	private static var HEX_WIDTH(default, never) = 1.0;
+	private static var HEX_HEIGHT(default, never) = 2.0;
+	private static var HEX_WIDTH(default, never) = 1.732;
+
+	private static var tileModel : Model;
 
 	public function new() {}
 
 	public function init():Void {
+		if (tileModel == null) tileModel = ColladaLoaderNew.loadCollada(kha.Assets.blobs.tile_dae, true)[0];
 		world = genWorld(5);
 	}
 
@@ -51,25 +62,27 @@ class StateGame implements State {
 			for (y in 0...n) {
 				hexes[x][y] = {
 					object: world.createObject("hex_tile")
-								.translate(HEX_SIZE*x + (y%2 == 0 ? 0 : ), 0, HEX_SIZE*0.75), 
+								.addComponent(new ComponentModel(tileModel))
+								.addComponent(new ComponentHexCollider(HEX_WIDTH, HEX_HEIGHT, 0.2))
+								.translate(HEX_WIDTH*x + (y%2 == 0 ? 0 : HEX_WIDTH*0.5), 0, y*HEX_HEIGHT*0.75), 
 					type: Grass}
 				;
 			}
 		}
 
-		world.createObject("test")
-			.addComponent(new ComponentBoxModel(
-				new MaterialDefault(new V4(1, 1, 1, 1), new V4(0.1, 0.1, 0.1, 1.0), new V4(0.1, 0.1, 0.1, 1.0), 0.5), 
-				1, 1, 1
-			));
-
 		world.createObject("sun")
-			.addComponent(new ComponentLight(new LightDefault(new V3(0.6, 0.3, 0.3), false)))
+			.addComponent(new ComponentLight(new LightDefault(new V3(3.6, 3.3, 3.3), false)))
 			.translate(7, 7, 7);
 
 		world.createObject("cam")
 			.addComponent(new ComponentCamera(new DefaultCamera(Perspective, 0, 70)))
-			.translate(0, 0, 5);
+			.translate(0, 8, 5)
+			.addComponent(new ComponentCamControl())
+			.lookAt(new V3(0, 0, 0));
+
+		world.createObject("coltest")
+			.addComponent(new ComponentRayCollider(new V3(0, -1, 0)))
+			.translate(0, 5, 0);
 
 		return world;
 	}
@@ -77,7 +90,6 @@ class StateGame implements State {
 	public function start():Void {}
 	public function stop():Void {}
 	public function update(deltaTime:Float):Void {
-		world.getObjectByName("test").rotateY(0.1);
 		world.update(deltaTime);
 	}
 	public function draw(frame:Framebuffer):Void {
