@@ -1,0 +1,13 @@
+#version 100
+precision mediump float;
+precision highp int;
+
+uniform highp samplerCube cubemap;
+
+varying highp vec3 frag_texDir;
+
+void main()
+{
+    gl_FragData[0] = textureCube(cubemap, frag_texDir);
+}
+

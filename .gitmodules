@@ -1,0 +1,3 @@
+[submodule "Libraries/rGine3"]
+	path = Libraries/rGine3
+	url = https://github.com/rhacking/rGine3.git

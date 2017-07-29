@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2">
+	<!-- Output SWF options -->
+	<output>
+		<movie outputType="Application" />
+		<movie input="" />
+		<movie path="debug-html5\kha.js" />
+		<movie fps="30" />
+		<movie width="800" />
+		<movie height="600" />
+		<movie version="16" />
+		<movie minorVersion="0" />
+		<movie platform="JavaScript" />
+		<movie background="#ffffff" />
+		<movie preferredSDK="..\..\..\Git\Kha\Tools\haxe" />
+	</output>
+	<!-- Other classes to be compiled into your SWF -->
+	<classpaths>
+		<class path="..\..\..\Git\Kha\Sources" />
+		<class path="..\..\..\Git\Kha\Backends\HTML5" />
+		<class path="..\Sources" />
+		<class path="..\Libraries\rGine3\Sources" />
+		<class path="..\Libraries\haxebullet\Sources" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\actuate\1,8,7" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\hxmath2\git" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\tink_xml\0,2,0\src" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\tink_macro\0,14,0\src" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\tink_core\1,14,3\src" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\thx,core\0,42,1\src" />
+		<class path="..\Libraries\rGine3" />
+		<class path="..\Libraries\haxebullet" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\tink_xml\0,2,0" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\tink_macro\0,14,0" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\tink_core\1,14,3" />
+		<class path="..\..\..\..\..\..\HaxeToolkit\haxe\lib\thx,core\0,42,1" />
+	</classpaths>
+	<!-- Build options -->
+	<build>
+		<option directives="" />
+		<option flashStrict="False" />
+		<option noInlineOnDebug="False" />
+		<option mainClass="Main" />
+		<option enabledebug="False" />
+		<option additional="-D rGine3&#xA;-D haxebullet&#xA;-D actuate&#xA;-D hxmath2&#xA;-D tink_xml&#xA;-D tink_macro&#xA;-D tink_core&#xA;-D tink_macro&#xA;-D tink_core&#xA;-D thx.core&#xA;-D sys_g1&#xA;-D sys_g2&#xA;-D sys_g3&#xA;-D sys_g4&#xA;-D sys_a1&#xA;-D sys_a2&#xA;-D kha_js&#xA;-D kha_g1&#xA;-D kha_g2&#xA;-D kha_g3&#xA;-D kha_g4&#xA;-D kha_a1&#xA;-D kha_a2&#xA;-D canvas_id=khanvas&#xA;-D script_name=kha&#xA;-D kha_webgl&#xA;-D sys_debug-html5&#xA;-D kha_debug-html5&#xA;-D kha_debug-html5_js&#xA;-D sys_debug_html5&#xA;-D kha_debug_html5&#xA;-D kha&#xA;-D kha_version=1611&#xA;-D kha_output=&quot;c:\Users\Roel\Documents\Ludum Dare\LD39\build\debug-html5\kha.js&quot;&#xA;-D thx_core&#xA;-debug&#xA;" />
+	</build>
+	<!-- haxelib libraries -->
+	<haxelib>
+		<!-- example: <library name="..." /> -->
+	</haxelib>
+	<!-- Class files to compile (other referenced classes will automatically be included) -->
+	<compileTargets>
+		<compile path="..\Sources\Main.hx" />
+	</compileTargets>
+	<!-- Paths to exclude from the Project Explorer tree -->
+	<hiddenPaths>
+		<!-- example: <hidden path="..." /> -->
+	</hiddenPaths>
+	<!-- Executed before build -->
+	<preBuildCommand />
+	<!-- Executed after build -->
+	<postBuildCommand alwaysRun="False" />
+	<!-- Other project options -->
+	<options>
+		<option showHiddenPaths="False" />
+		<option testMovie="Webserver" />
+		<option testMovieCommand="debug-html5\index.html" />
+	</options>
+	<!-- Plugin storage -->
+	<storage />
+</project>
