@@ -3,6 +3,7 @@ project.addAssets('Assets/**');
 project.addShaders("Libraries/rGine3/Shaders/**");
 project.addSources('Sources');
 project.addLibrary("rGine3");
+project.addLibrary("zui");
 
 project.addLibrary("haxebullet");
 project.addLibrary("actuate");

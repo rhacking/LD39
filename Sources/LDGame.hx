@@ -12,11 +12,14 @@ import ldgame.states.*;
 class LDGame extends Game {
 	var stateMan : StateManager;
 
+	public static var game : StateGame;
+
 	public function new() {}
 
 	override function init() : Void {
 		stateMan = new StateManager();
-		stateMan.addState("GAME", new StateGame());
+		game = new StateGame();
+		stateMan.addState("GAME", game);
 		stateMan.setState("GAME");
 	}
 
