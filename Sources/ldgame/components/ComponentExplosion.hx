@@ -11,6 +11,7 @@ class ComponentExplosion extends Component {
 		this.object.addComponent(comp);
 		var light = new rgine.components.ComponentLight(new rgine.gfx.Light.LightDefault(new FastVector3(2.9, 1.3, 1.3), false));
 		this.object.addComponent(light);
+		comp.spawnRate = 2.4;
 		motion.Actuate.tween(comp, 3, {spawnRate: 0}).onComplete(function() {
 			this.object.scene.removeObject(this.object);
 		});

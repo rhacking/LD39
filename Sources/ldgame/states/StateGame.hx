@@ -47,14 +47,17 @@ class StateGame implements State {
 
 	public static var tileColors = [
 		Grass => new V4(0.2, 0.9, 0.3), 
-		Village => new V4(0.7, 0.5, 0.1), 
+		Village => new V4(0.7, 0.4, 0.1), 
 		VisMine => new V4(0.05, 0.1, 0.9),
 		Water => new V4(0.05, 0.6, 0.95), 
-		SolemCollector => new V4(1.0, 1.0, 0.15)
+		SolemCollector => new V4(1.0, 1.0, 0.1)
 	];
 
 	public static var tileHeights = [
-		Water => 0.32
+		Water => 0.27, 
+		Village => 0.65, 
+		VisMine => 0.6, 
+		SolemCollector => 0.76
 	];
 
 	public static var costs = [
@@ -112,7 +115,8 @@ class StateGame implements State {
 			.addComponent(new ComponentCamera(new DefaultCamera(Perspective, 0, 70)))
 			.translate(0, 8, 5)
 			.addComponent(new ComponentCamControl())
-			.lookAt(new V3(0, 0, 3));
+			.lookAt(new V3(0, 0, 3))
+			.translate(HEX_WIDTH*n/2, 0, 0);
 
 		world.createObject("background")
 			.translate(0, -1, 0)
@@ -131,7 +135,7 @@ class StateGame implements State {
 	}
 
 	public function start():Void {
-		motion.Actuate.timer(3).onComplete(function() kha.audio1.Audio.play(kha.Assets.sounds.music, true));
+		motion.Actuate.timer(1.2).onComplete(function() kha.audio1.Audio.play(kha.Assets.sounds.music, true));
 	}
 	public function stop():Void {}
 	public function update(deltaTime:Float):Void {

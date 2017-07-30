@@ -48,7 +48,7 @@ class WorldSystem extends System {
 		}
 	}
 
-	private var time = 85.0;
+	private var time = 0.0;
 	private var acc = 0.0;
 	private static var TIME_STEP(default, never) = 1.5;
 
@@ -231,7 +231,7 @@ class WorldSystem extends System {
 	override public function draw(frame:Framebuffer) {
 		var pipeline = rgine.gfx.Pipelines.DEFAULT;
 		frame.g4.setPipeline(pipeline.pipelineState);
-		frame.g4.setVector3(pipeline.getLocation("lightDir"), new FastVector3(-0.4, -0.7, -0.4));
+		frame.g4.setVector3(pipeline.getLocation("lightDir"), new FastVector3(-0.4, -0.7, -0.6));
 		frame.g4.setVector3(pipeline.getLocation("lightIntensity"), new FastVector3(0.15, 0.15, 0.15));
 	}
 
@@ -293,30 +293,37 @@ class WorldSystem extends System {
 		if (ui.getInputInRect(ui._windowX, ui._windowY, ui._windowW, ui._windowH)) dialogHover = true;
 
 		var selectorWin = Id.handle();
-		if (ui.window(selectorWin, 8, 300, 200, 400, true)) {
+		if (ui.window(selectorWin, 8, 300, 230, 400, true)) {
 			var radioHandle = Id.handle();
 			var i = 0;
 			for (type in HexType.getConstructors()) {
-				if (ui.radio(radioHandle, i++, type)) currentHexType = type;
+				if (ui.radio(radioHandle, i++, '$type (Cost: ${StateGame.costs[HexType.createByName(type)]})')) currentHexType = type;
 			}
 		}
 		if (ui.getInputInRect(ui._windowX, ui._windowY, ui._windowW, ui._windowH)) dialogHover = true;
 
 		var timeWin = Id.handle();
+		timeWin.text = "Time";
 		timeWin.redraws = 1;
 		if (ui.window(timeWin, 320, 8, 200, 110, true)) {
 			if (ui.button("Next")) {
 				acc += TIME_STEP;
 				time += TIME_STEP;
+				var s = kha.audio1.Audio.play(kha.Assets.sounds.pick2);
+				if (s != null) s.volume = 0.3;
 			}
-			if (ui.button(playing ? "Stop" : "Play")) playing = !playing;
+			if (ui.button(playing ? "Stop" : "Play")) {
+				playing = !playing;
+				var s = kha.audio1.Audio.play(kha.Assets.sounds.pick2);
+				if (s != null) s.volume = 0.3;
+			}
 			ui.separator();
 			ui.text('Year: ${Math.floor(time)}');
 		}
 		if (ui.getInputInRect(ui._windowX, ui._windowY, ui._windowW, ui._windowH)) dialogHover = true;
 
 		var helpWin = Id.handle();
-		if (ui.window(helpWin, 8, 600, 400, 400, true)) {
+		if (ui.window(helpWin, 8, 480, 400, 400, true)) {
 			var hcombo = Id.handle();
 			var choice = ui.combo(hcombo, [for (key in helpTexts.keys()) key]);
 
